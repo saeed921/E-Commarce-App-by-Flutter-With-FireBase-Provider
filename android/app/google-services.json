@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "213268010761",
+    "project_id": "ecomadmin-ca57b",
+    "storage_bucket": "ecomadmin-ca57b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213268010761:android:0e4cb4cb2f30cd428725d8",
+        "android_client_info": {
+          "package_name": "com.example.ecomadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213268010761-q1lf3jfkgn4ri5bpkmugslto2jn8651m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf_mnOE3AivkDYfbGkFezA5x8VOs1C-AM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213268010761-q1lf3jfkgn4ri5bpkmugslto2jn8651m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
