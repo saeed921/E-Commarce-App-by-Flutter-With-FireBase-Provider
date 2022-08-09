@@ -1,5 +1,7 @@
 import 'package:ecomadmin/pages/category_page.dart';
 import 'package:ecomadmin/pages/dashboard_page.dart';
+import 'package:ecomadmin/pages/launcher_page.dart';
+import 'package:ecomadmin/pages/login_page.dart';
 import 'package:ecomadmin/pages/order_page.dart';
 import 'package:ecomadmin/pages/product_page.dart';
 import 'package:ecomadmin/pages/report_page.dart';
@@ -28,15 +30,18 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
 
       ),
-      initialRoute: DashBoardPage.routeName,
+      initialRoute:  LauncherPage.routeName,
       routes: {
         DashBoardPage.routeName:(_)=> DashBoardPage(),
+        LauncherPage.routeName: (_) => LauncherPage(),
+        LoginPage.routeName: (_) => LoginPage(),
         ProductPage.routeName:(_)=> ProductPage(),
         CategoryPage.routeName:(_)=> CategoryPage(),
         OrderPage.routeName:(_)=> OrderPage(),
         UserPage.routeName:(_)=> UserPage(),
         SettingsPage.routeName:(_)=> SettingsPage(),
         ReportPage.routeName:(_)=> ReportPage(),
+
 
       },
 
