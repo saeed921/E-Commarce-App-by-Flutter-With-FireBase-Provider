@@ -1,21 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../models/dashboard_item.dart';
 
 class DashboardItemView extends StatelessWidget {
   final DashboardItem item;
-  final Function(String)onPressed;
+  final Function(String) onPressed;
+
   const DashboardItemView({
     Key? key,
     required this.item,
     required this.onPressed,
-}): super (key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         onPressed(item.title);
       },
       child: Card(
@@ -35,9 +35,9 @@ class DashboardItemView extends StatelessWidget {
               item.title,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16
+                fontSize: 16,
               ),
-            )
+            ),
           ],
         ),
       ),

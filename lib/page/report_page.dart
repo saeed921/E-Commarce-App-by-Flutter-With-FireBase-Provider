@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ReportPage extends StatelessWidget {
-  static const String routeName='/report';
+  static const String routeName = '/report';
   const ReportPage({Key? key}) : super(key: key);
 
   @override

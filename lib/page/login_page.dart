@@ -1,9 +1,11 @@
-import 'package:ecomadmin/pages/launcher_page.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../auth/firebase_auth.dart';
+
+import '../auth/auth_service.dart';
+import 'launcher_page.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -17,8 +19,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
-  bool isLogin = true,
-      isObscureText = true;
+  bool isObscureText = true;
   final formKey = GlobalKey<FormState>();
   String errMsg = '';
 
@@ -47,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: Icon(Icons.email),
                     filled: true),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if(value == null || value.isEmpty) {
                     return 'This field must not be empty';
                   }
                   return null;
@@ -64,17 +65,15 @@ class _LoginPageState extends State<LoginPage> {
                   prefixIcon: Icon(Icons.lock),
                   suffixIcon: IconButton(
                     icon: Icon(
-                        isObscureText ? Icons.visibility_off : Icons
-                            .visibility),
-                    onPressed: () =>
-                        setState(() {
-                          isObscureText = !isObscureText;
-                        }),
+                        isObscureText ? Icons.visibility_off : Icons.visibility),
+                    onPressed: () => setState(() {
+                      isObscureText = !isObscureText;
+                    }),
                   ),
                   filled: true,
                 ),
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
+                  if(value == null || value.isEmpty) {
                     return 'This field must not be empty';
                   }
                   return null;
@@ -85,12 +84,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  isLogin = true;
                   authenticate();
                 },
                 child: const Text('LOGIN'),
               ),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -104,9 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               const SizedBox(height: 10,),
-              Text(errMsg, style: TextStyle(color: Theme
-                  .of(context)
-                  .errorColor),)
+              Text(errMsg, style: TextStyle(color: Theme.of(context).errorColor),)
             ],
           ),
         ),
@@ -114,23 +109,19 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void authenticate() async {
-    if (formKey.currentState!.validate()) {
-      bool status;
+  authenticate() async {
+    if(formKey.currentState!.validate()) {
       try {
         final status = await AuthService.login(emailController.text, passController.text);
-        if( status){
-          if(!mounted)return;
+        if(status) {
+          if(!mounted) return;
           Navigator.pushReplacementNamed(context, LauncherPage.routeName);
-
-        }else{
-          await AuthService.logOut();
-          setState((){
-            errMsg= 'This email does not belong to admin account';
-
+        } else {
+          await AuthService.logout();
+          setState(() {
+            errMsg = 'This email does not belong to an Admin account';
           });
         }
-
       } on FirebaseAuthException catch (e) {
         setState(() {
           errMsg = e.message!;
@@ -138,6 +129,4 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
   }
-
-
 }

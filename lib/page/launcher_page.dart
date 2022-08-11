@@ -1,8 +1,9 @@
 
-import 'package:ecomadmin/pages/dashboard_page.dart';
 import 'package:flutter/material.dart';
 
-import '../auth/firebase_auth.dart';
+
+import '../auth/auth_service.dart';
+import 'dashboard_page.dart';
 import 'login_page.dart';
 
 class LauncherPage extends StatefulWidget {
@@ -14,22 +15,17 @@ class LauncherPage extends StatefulWidget {
 }
 
 class _LauncherPageState extends State<LauncherPage> {
-
   @override
   void initState() {
-
-    Future.delayed(Duration.zero,(){
-      if(AuthService.user==null){
+    Future.delayed(Duration.zero, () {
+      if(AuthService.user == null) {
         Navigator.pushReplacementNamed(context, LoginPage.routeName);
-      }
-      else{
-        Navigator.pushReplacementNamed(context, DashBoardPage.routeName);
+      } else {
+        Navigator.pushReplacementNamed(context, DashboardPage.routeName);
       }
     });
-
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

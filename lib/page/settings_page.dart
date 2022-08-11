@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
-  static const String routeName='/settings';
+  static const String routeName = '/settings';
   const SettingsPage({Key? key}) : super(key: key);
 
   @override
